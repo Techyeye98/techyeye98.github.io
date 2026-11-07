@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909"><meta name="description" content="Namya Mehta — independent builder behind Pocket Ledger, TVora and practical automation. Explore Android apps, web experiences and systems that solve everyday problems.">
+<title>Namya Mehta — Ideas into things that work.</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23090909'/%3E%3Ctext x='14' y='72' font-size='65' font-family='sans-serif' font-weight='bold' fill='%23e63848'%3EN.%3C/text%3E%3C/svg%3E">
+<script>try{var a=localStorage.getItem("nm-accent");if(a&&/^(ember|cobalt|violet|jade)$/.test(a))document.documentElement.dataset.accent=a}catch(e){}</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#work">Skip to projects</a>
+<header class="nav"><a class="wordmark" href="#home" aria-label="Namya Mehta home">nm<span>®</span></a><span class="nav-note">NAMYA MEHTA<br>INDEPENDENT BUILDER</span><nav aria-label="Main navigation"><a href="#work">Work <span>04</span></a><a href="#about">About</a><a class="nav-contact" href="#contact">Let's talk <span>↗</span></a></nav></header>
+<main>
+<section class="hero" id="home" aria-label="Introduction with interactive portrait">
+  <div class="hero-top"><span>CODE. CURIOSITY. A LITTLE CHAOS.</span><span>TECHYEYE98 / PERSONAL PORTFOLIO</span></div>
+  <h1 class="hero-title">BUILDER<button class="title-dot" type="button" id="accent-dot" data-tip="Change colour" aria-label="Change colour theme">.</button></h1>
+  <p class="sr-only" id="accent-status" aria-live="polite"></p>
+  <div id="portrait-stage" role="img" aria-label="Interactive crimson particle sculpture of Namya Mehta; use Reveal me to see his portrait"><img class="fallback-photo" src="assets/portrait.png" alt="Namya Mehta as a clean AI illustration wearing glasses and a charcoal overshirt" fetchpriority="high"><div id="loader" aria-live="polite"><div class="loading-ring"></div><span>0%</span></div></div>
+  <div class="hero-bottom"><div class="hero-intro"><span class="eyebrow"><i></i> HELLO, I'M NAMYA.</span><p>I turn everyday problems<br>into things that <em>work.</em></p></div><div class="reveal-wrap"><button id="reveal" type="button" disabled><span class="button-icon">◉</span><span class="button-label">Reveal me</span><span>↗</span></button><span id="interaction-hint">MOVE YOUR CURSOR. SAY HELLO.</span></div><a class="scroll-cue" href="#work"><span>SCROLL TO EXPLORE</span><span class="arrow-down">↓</span></a></div>
+</section>
+<div class="portfolio-body">
+<section class="work" id="work" aria-labelledby="work-title">
+  <header class="work-head">
+    <p class="kicker"><i aria-hidden="true"></i>Selected work</p>
+    <h2 id="work-title">Four builds.<br><span>Four ways in.</span></h2>
+    <p class="work-lede">A ledger that knows a repayment isn’t spending. A phone that rearranges your TV. A bot that runs browser jobs and never loses a result. A calculator that tells you which numbers it’s sure of.</p>
+    <nav class="work-index" aria-label="Projects">
+      <a href="#ledger"><b>01</b><span>Pocket Ledger</span><small>Android · finance</small></a>
+      <a href="#tvora"><b>02</b><span>TVora</span><small>Android · TV</small></a>
+      <a href="#zed"><b>03</b><span>Zed Flash</span><small>Python · automation</small></a>
+      <a href="#evaluator"><b>04</b><span>Evaluator</span><small>Android · calculators</small></a>
+    </nav>
+  </header>
+
+  <!-- 01 · Pocket Ledger: presented as a printed receipt -->
+  <article class="project ledger" id="ledger" aria-labelledby="ledger-title">
+    <div class="case-label"><b>01</b><span>Android · Personal finance · Java</span></div>
+    <div class="ledger-grid">
+      <div class="ledger-copy">
+        <h3 id="ledger-title">Pocket Ledger</h3>
+        <p class="deck">An offline expense tracker that keeps what you <em>spent</em> apart from what you <em>moved</em> and what you’re <em>owed</em>.</p>
+        <figure class="ledger-phone">
+          <div class="pl-phone" role="group" aria-label="Recreated Pocket Ledger screen with sample data">
+            <div class="pl-screen">
+              <div class="pl-top"><span class="pl-title">Today</span><span class="pl-chip">Sample</span></div>
+              <div class="pl-card" data-card="money">
+                <p class="pl-label">Available money</p>
+                <p class="pl-big" id="pl-total">₹10,000</p>
+                <div class="pl-split"><i id="pl-bar-bank" style="width:84%"></i><i id="pl-bar-cash" style="width:16%"></i></div>
+                <div class="pl-row" data-row="bank"><span><b class="d d1"></b>Everyday bank</span><b id="pl-bank">₹8,400</b></div>
+                <div class="pl-row" data-row="cash"><span><b class="d d2"></b>Cash in hand</span><b id="pl-cash">₹1,600</b></div>
+              </div>
+              <div class="pl-card" data-card="spent">
+                <div class="pl-head"><p class="pl-label">Spent today</p><b id="pl-spent">₹1,013.75</b></div>
+                <ul class="pl-list" id="pl-list">
+                  <li><span><b class="d c1"></b>Petrol</span><b>₹411.75</b></li>
+                  <li><span><b class="d c2"></b>Groceries</span><b>₹89.00</b></li>
+                  <li><span><b class="d c3"></b>Education</span><b>₹99.00</b></li>
+                  <li><span><b class="d c2"></b>Groceries</span><b>₹114.00</b></li>
+                  <li><span><b class="d c1"></b>Petrol</span><b>₹300.00</b></li>
+                </ul>
+              </div>
+              <div class="pl-card pl-owe" data-card="owe"><span>Friends owe you<small>Dinner for three</small></span><b id="pl-owe">₹800</b></div>
+              <p class="pl-toast" id="pl-toast"></p>
+              <div class="pl-sheet" id="pl-sheet" hidden>
+                <div class="pl-sheet-head"><p>Add entry</p><button type="button" class="pl-reset" id="pl-reset">Reset</button></div>
+                <button type="button" class="pl-act" data-act="expense"><b>Expense</b><small>₹150</small><i>Counts as spending</i></button>
+                <button type="button" class="pl-act" data-act="transfer"><b>Transfer</b><small>₹500</small><i>Bank → cash · not spending</i></button>
+                <button type="button" class="pl-act" data-act="repay"><b>Repayment</b><small>₹200</small><i>A friend pays you back</i></button>
+              </div>
+              <div class="pl-nav"><span class="on" aria-hidden="true">Home</span><button type="button" class="plus hint" id="pl-add" aria-expanded="false" aria-controls="pl-sheet" aria-label="Add an entry">+</button><span aria-hidden="true">Activity</span></div>
+            </div>
+          </div>
+          <figcaption>Recreated screen · sample data from the Pocket Ledger site</figcaption>
+        </figure>
+        <div class="pl-under"><p class="pl-explain" id="pl-explain" aria-live="polite">Tap <b>+</b> on the phone to add an entry.</p><p class="pl-feat">Accounts · Transfers · Split bills · Lena / Dena · Receipt scan · Sheets report</p></div>
+      </div>
+      <div class="receipt-wrap">
+        <div class="receipt-flip">
+        <div class="receipt r-front" id="r-front" role="group" aria-label="Pocket Ledger case summary">
+          <p class="r-head">POCKET LEDGER<br><span>Case receipt · v1.0.0 · Android 8.0+</span></p>
+          <dl class="r-list">
+            <div><dt>Problem</dt><dd>Shared bills and repayments blur where your own money actually went.</dd></div>
+            <div><dt>I built</dt><dd>The Android app, bill splitter, Sheets sync and download site.</dd></div>
+          </dl>
+          <p class="r-sub">Key decisions</p>
+          <ol class="r-items">
+            <li><span>Transfers &amp; repayments kept out of spending totals</span></li>
+            <li><span>Works offline; receipt text is read on the device</span></li>
+            <li><span>Sync is optional, into a Sheet <em>you</em> own</span></li>
+          </ol>
+          <button type="button" class="r-flip" aria-controls="r-back" hidden><span aria-hidden="true">↻</span> Try splitting a bill</button>
+          <a class="r-link" href="https://techyeye98.github.io/Pocket-Ledger/" target="_blank" rel="noopener">Visit Pocket Ledger <span aria-hidden="true">↗</span></a>
+          <a class="r-link2" href="https://github.com/Techyeye98/Pocket-Ledger/releases/tag/v1.0.0" target="_blank" rel="noopener">Release 1.0.0 on GitHub <span aria-hidden="true">↗</span></a>
+          <p class="r-foot" aria-hidden="true">* * * THANK YOU * * *</p>
+        </div>
+        <div class="receipt r-back" id="r-back" role="group" aria-label="Bill splitter">
+          <p class="r-head">SPLIT A BILL<br><span>Try it · sample amounts</span></p>
+          <div class="r-split r-live" role="group" aria-label="Bill splitter controls">
+            <div class="sp-line">
+              <span class="sp-amt">₹<input id="sp-amount" type="number" inputmode="decimal" min="0" max="100000" step="1" value="900" aria-label="Bill amount in rupees"></span>
+              <span class="sp-x" aria-hidden="true">÷</span>
+              <span class="sp-step" role="group" aria-label="People sharing"><button type="button" id="sp-minus" aria-label="One fewer person">−</button><output id="sp-people" aria-live="polite">3</output><button type="button" id="sp-plus" aria-label="One more person">+</button></span>
+              <span class="sp-seg" role="radiogroup" aria-label="Who paid"><button type="button" role="radio" aria-checked="true" data-payer="me">You paid</button><button type="button" role="radio" aria-checked="false" data-payer="friend" tabindex="-1">Friend</button></span>
+            </div>
+            <div class="r-row"><span>Your spending</span><b id="sp-mine">₹300.00</b></div>
+            <div class="r-row r-total"><span id="sp-other-label">To receive</span><b id="sp-other">₹600.00</b></div>
+          </div>
+          <p class="r-note" id="sp-note" aria-live="polite">You paid ₹900, but only your ₹300 share counts as spending.</p>
+          <p class="r-sub">How Pocket Ledger records it</p>
+          <ol class="r-items">
+            <li><span>Your share goes into spending</span></li>
+            <li><span>The rest is tracked as Lena, money to receive</span></li>
+            <li><span>When a friend pays back, it’s not counted as income</span></li>
+          </ol>
+          <button type="button" class="r-flip" aria-controls="r-front" hidden><span aria-hidden="true">↻</span> Back to case summary</button>
+          <p class="r-foot" aria-hidden="true">* * * THANK YOU * * *</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 · TVora: a TV you flip through with a remote -->
+  <article class="project tvora" id="tvora" aria-labelledby="tvora-title">
+    <div class="case-label"><b>02</b><span>Android · TV customization · Kotlin &amp; Compose</span></div>
+    <div class="tv-head">
+      <h3 id="tvora-title">TVora</h3>
+      <p class="deck">Clean up and personalise an Android TV from your phone — with a way back for every change.</p>
+    </div>
+    <div class="tv-stage">
+      <figure class="tv-phone">
+        <img src="assets/tvora.png" width="360" height="780" alt="TVora phone app showing the connected TV dashboard" loading="lazy" decoding="async">
+        <figcaption>Real TVora screen · earlier build</figcaption>
+      </figure>
+      <div class="tv">
+        <div class="tv-screen">
+          <div class="tv-osd" aria-hidden="true"><span>CH <b id="tv-ch">01</b></span><span class="tv-live">● LIVE</span></div>
+          <div class="tv-panel" role="tabpanel" id="tv-p1" aria-labelledby="tv-t1" tabindex="0">
+            <p class="tv-kicker">Problem</p>
+            <p class="tv-big">Arranging apps, swapping wallpaper and clearing clutter means many trips through TV menus.</p>
+          </div>
+          <div class="tv-panel" role="tabpanel" id="tv-p2" aria-labelledby="tv-t2" tabindex="0" hidden>
+            <p class="tv-kicker">What I built</p>
+            <p class="tv-big">TVora, built on the open-source Clean Your TV app and launcher. I added phone pairing, wallpaper import, app visibility and placement, a Bluetooth shortcut and recovery fixes.</p>
+          </div>
+          <div class="tv-panel" role="tabpanel" id="tv-p3" aria-labelledby="tv-t3" tabindex="0" hidden>
+            <p class="tv-kicker">Key decisions</p>
+            <ul class="tv-list">
+              <li>Connects over local ADB; the TV owner authorizes debugging.</li>
+              <li>Cleanup shows a plan first and saves a restore point.</li>
+              <li>A restore ends on the TV’s restored Home screen; skipped steps are reported, never hidden.</li>
+              <li>Hiding an app never uninstalls it.</li>
+            </ul>
+          </div>
+          <div class="tv-panel" role="tabpanel" id="tv-p4" aria-labelledby="tv-t4" tabindex="0" hidden>
+            <p class="tv-kicker">Credits &amp; status</p>
+            <p class="tv-big tv-mid">Built on Clean Your TV by udhaykumarbala, with the launcher, themes and TV lists by Gathin &amp; contributors. MIT licensed. Release 0.1.2, 5&nbsp;Nov&nbsp;2026.</p>
+          </div>
+          <div class="tv-noise" aria-hidden="true"></div>
+        </div>
+        <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="remote">
+        <p class="remote-label" aria-hidden="true">Remote</p>
+        <div class="remote-tabs" role="tablist" aria-label="TVora channels" aria-orientation="vertical">
+        <button class="ch" role="tab" id="tv-t1" aria-controls="tv-p1" aria-selected="true"><b>1</b>Problem</button>
+        <button class="ch" role="tab" id="tv-t2" aria-controls="tv-p2" aria-selected="false" tabindex="-1"><b>2</b>Built</button>
+        <button class="ch" role="tab" id="tv-t3" aria-controls="tv-p3" aria-selected="false" tabindex="-1"><b>3</b>Decisions</button>
+        <button class="ch" role="tab" id="tv-t4" aria-controls="tv-p4" aria-selected="false" tabindex="-1"><b>4</b>Credits</button>
+        </div>
+        <div class="remote-links">
+          <a class="remote-visit" href="https://github.com/Techyeye98/TVora" target="_blank" rel="noopener">Visit TVora <span aria-hidden="true">↗</span></a>
+          <a class="remote-link" href="https://github.com/Techyeye98/TVora/releases/tag/v0.1.2" target="_blank" rel="noopener">Release 0.1.2 on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 03 · Zed Flash: live job simulator on the workflow diagram -->
+  <article class="project zed" id="zed" aria-labelledby="zed-title">
+    <div class="case-label"><b>03</b><span>Python · Private automation tool · Docker</span></div>
+    <div class="zed-head">
+      <h3 id="zed-title">Zed Flash</h3>
+      <p class="deck">Send a job from Telegram. Watch it run. Pause, stop or resume it, and never lose a result, even when the sheet is down.</p>
+    </div>
+    <figure class="flow" aria-labelledby="flow-cap">
+      <figcaption id="flow-cap" class="sr-only">Zed Flash job workflow: commands arrive from Telegram, a browser worker and a separate Sheets sync service run inside one Docker deployment with job state and results saved locally, and Google Sheets mirrors the results. The controls below run a simulated test job.</figcaption>
+      <div class="flow-bar">
+        <p>Job simulator <span>· sample job, no real data</span></p>
+        <div class="flow-controls" role="group" aria-label="Simulated job controls">
+          <button class="flow-run" type="button" id="zf-run"><span class="run-dot" aria-hidden="true"></span><span class="run-label">Run a test job</span></button>
+          <button class="flow-btn" type="button" id="zf-pause" disabled>Pause</button>
+          <button class="flow-btn" type="button" id="zf-stop" disabled>Stop</button>
+          <button class="flow-switch" type="button" id="zf-offline" role="switch" aria-checked="false"><span class="sw" aria-hidden="true"><i></i></span>Sheets offline</button>
+        </div>
+      </div>
+      <ol class="flow-track">
+        <li class="node" data-step="0"><button type="button" aria-describedby="flow-detail"><small>01 · Command</small><strong>Telegram</strong><span>Start, pause, stop or resume a job from chat.</span></button></li>
+        <li class="docker">
+          <p class="docker-tag">Docker deployment</p>
+          <ol>
+            <li class="node" data-step="1"><button type="button" aria-describedby="flow-detail"><small>02 · Run</small><strong>Browser worker</strong><span>Works through the job row by row.</span></button></li>
+            <li class="node" data-step="2"><button type="button" aria-describedby="flow-detail"><small>03 · Sync</small><strong>Sheets sync</strong><span>Queues writes and retries on its own.</span></button></li>
+          </ol>
+          <div class="volume"><span aria-hidden="true">⛁</span> Job state &amp; results saved locally in SQLite</div>
+        </li>
+        <li class="node" data-step="3"><button type="button" aria-describedby="flow-detail"><small>04 · Record</small><strong>Google Sheets</strong><span>Mirrors results whenever it’s reachable.</span><em class="sheet-badge" aria-hidden="true"></em></button></li>
+      </ol>
+      <div class="flow-wire" aria-hidden="true"><i class="pulse"></i></div>
+      <div class="job" aria-label="Simulated job progress">
+        <div class="job-top"><p class="job-name">Test job <span>· 8 rows</span></p><p class="job-state" id="zf-state">Idle</p></div>
+        <ol class="job-rows" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+        <p class="job-counts" id="zf-counts">Done 0/8 · Failed 0 · Waiting for Sheets 0</p>
+      </div>
+      <p class="flow-detail" id="flow-detail" aria-live="polite">Run a test job, then try Pause, Stop or switching Sheets offline.</p>
+    </figure>
+    <dl class="zed-facts">
+      <div><dt>Problem</dt><dd>Repeat browser jobs meant doing the same clicks by hand, then updating a sheet separately.</dd></div>
+      <div><dt>I built</dt><dd>Telegram job control, browser automation and a separate Sheets sync, shipped as one Docker deployment.</dd></div>
+      <div><dt>Decisions</dt><dd>Jobs live in SQLite: pause finishes the current row, stop keeps the progress made. Sheet writes queue and retry on their own, so results stay safe.</dd></div>
+      <div><dt>Access</dt><dd>Private tool. This is a simulation; no source, servers or data are shown.</dd></div>
+    </dl>
+  </article>
+
+  <!-- 04 · Evaluator: confirmed vs estimated -->
+  <article class="project evaluator" id="evaluator" aria-labelledby="eval-title">
+    <div class="case-label"><b>04</b><span>Android · Fee calculators · Java</span></div>
+    <div class="eval-head">
+      <h3 id="eval-title">Evaluator</h3>
+      <p class="deck">Two fee calculators that work fully offline, and tell you which numbers are <em>confirmed</em> and which are <em>estimates</em>.</p>
+    </div>
+    <div class="eval-grid">
+      <div class="certainty">
+        <p class="eval-hint">Tap a calculator</p>
+        <div class="calc calc-confirmed">
+          <button type="button" class="calc-btn" aria-expanded="false" aria-controls="calc-a"><span class="calc-tag">Confirmed</span><strong>Certification fee</strong><span class="meter" aria-hidden="true"><i></i></span><span class="calc-more" aria-hidden="true">+</span></button>
+          <div class="calc-detail" id="calc-a" hidden><p>Results matched the reference app across the recorded test cases, so they’re shown as they are.</p></div>
+        </div>
+        <div class="calc calc-estimate">
+          <button type="button" class="calc-btn" aria-expanded="false" aria-controls="calc-b"><span class="calc-tag">Estimate</span><strong>Handholding fee</strong><span class="meter" aria-hidden="true"><i></i></span><span class="calc-more" aria-hidden="true">+</span></button>
+          <div class="calc-detail" id="calc-b" hidden><p>This one couldn’t be compared against the reference, so every result carries a provisional-estimate label, on screen and in shared PDFs.</p></div>
+        </div>
+      </div>
+      <dl class="eval-facts">
+        <div><dt>Problem</dt><dd>The reference calculator app needed a login and a server just to run the numbers.</dd></div>
+        <div><dt>I built</dt><dd>An independent native Android rebuild with both calculators, plain-language explanations and PDF/text sharing. No login, no server.</dd></div>
+        <div><dt>Decisions</dt><dd><ol class="eval-list"><li>No permissions at all, not even Internet, so it works anywhere. Rules update with the app.</li><li>Decimal arithmetic throughout. The reference’s negative-fee and misleading-subsidy displays were fixed, not copied.</li><li>Confirmed and estimated results are labelled separately everywhere.</li></ol></dd></div>
+        <div><dt>Status</dt><dd>Version 1.0 · private test build · a planning tool, not an official quotation.</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <aside class="also" aria-labelledby="also-title">
+    <p class="kicker" id="also-title"><i aria-hidden="true"></i>Also built</p>
+    <div class="also-row">
+      <div class="also-copy"><strong>Northline Roofing</strong><p>A demo roofing-business site on Whop with service pages, estimate capture and hosted checkout. The business is fictional; payments weren’t tested end to end, and the bounty submission didn’t meet its requirements.</p></div>
+      <div class="also-links"><a href="https://northline-roofing-efgh34.whop.site/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a><a href="https://github.com/Techyeye98/northline-roofing-whop" target="_blank" rel="noopener">Source <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </aside>
+</section>
+
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="about-side">
+    <p class="kicker"><i aria-hidden="true"></i>About</p>
+    <h2 id="about-title">Namya<br>Mehta<span>.</span></h2>
+    <p class="about-handle">Techyeye98 · independent builder</p>
+    <div class="find-me" aria-label="Find me online">
+      <a href="https://github.com/Techyeye98" target="_blank" rel="noopener"><span class="fm-k">GitHub</span><span class="fm-v">@Techyeye98</span><b aria-hidden="true">↗</b></a>
+      <a href="https://t.me/Techyeye" target="_blank" rel="noopener"><span class="fm-k">Telegram</span><span class="fm-v">@Techyeye</span><b aria-hidden="true">↗</b></a>
+    </div>
+  </div>
+  <div class="about-main">
+    <p class="about-lead">I build Android apps and automation for the things I keep doing by hand — and I care most about what happens <em>after</em> the first tap.</p>
+    <ol class="rules">
+      <li><b>01</b><div><strong>A repayment is not spending.</strong><p>Pocket Ledger keeps transfers and paybacks out of your totals, so the number you see is the money you actually used.</p></div></li>
+      <li><b>02</b><div><strong>Every cleanup needs an undo.</strong><p>TVora shows the plan and saves a restore point before it changes anything on the TV.</p></div></li>
+      <li><b>03</b><div><strong>Automation should leave a trail.</strong><p>Zed Flash keeps every result locally and reports failed rows, so you can check what ran without asking.</p></div></li>
+      <li><b>04</b><div><strong>Say what you’re sure of.</strong><p>Evaluator labels its estimates as estimates, on screen and in every shared PDF.</p></div></li>
+    </ol>
+    <div class="toolbox">
+      <div><p>On Android</p><ul><li>Java</li><li>Kotlin</li><li>Jetpack Compose</li><li>Room</li><li>ML Kit</li><li>ADB</li></ul></div>
+      <div><p>For automation</p><ul><li>Python</li><li>Playwright</li><li>Telegram bots</li><li>SQLite</li><li>Docker</li><li>Google Sheets</li></ul></div>
+      <div><p>On the web</p><ul><li>HTML, CSS &amp; JS</li><li>React</li><li>TypeScript</li><li>Three.js</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <p class="kicker"><i aria-hidden="true"></i>Contact</p>
+  <h2 id="contact-title">Got a chore<br>worth <span>killing?</span></h2>
+  <p class="contact-lede">Tell me what you’re building, or the task you wish you could stop doing by hand. Email or Telegram, whichever suits you.</p>
+  <ul class="channels">
+    <li>
+      <a class="channel" href="mailto:mehtanamya98@gmail.com"><span class="c-k">Email</span><span class="c-v c-mail">mehtanamya98@gmail.com</span><span class="c-arrow" aria-hidden="true">↗</span></a>
+      <button class="copy" type="button" data-copy="mehtanamya98@gmail.com" aria-label="Copy email address mehtanamya98@gmail.com"><span class="copy-label">Copy</span></button>
+    </li>
+    <li>
+      <a class="channel" href="https://t.me/Techyeye" target="_blank" rel="noopener"><span class="c-k">Telegram</span><span class="c-v">@Techyeye</span><span class="c-arrow" aria-hidden="true">↗</span></a>
+      <button class="copy" type="button" data-copy="@Techyeye" aria-label="Copy Telegram handle @Techyeye"><span class="copy-label">Copy</span></button>
+    </li>
+    <li>
+      <a class="channel" href="https://github.com/Techyeye98" target="_blank" rel="noopener"><span class="c-k">GitHub</span><span class="c-v">@Techyeye98</span><span class="c-arrow" aria-hidden="true">↗</span></a>
+      <button class="copy" type="button" data-copy="https://github.com/Techyeye98" aria-label="Copy GitHub profile link"><span class="copy-label">Copy</span></button>
+    </li>
+  </ul>
+  <p class="sr-only" aria-live="polite" id="copy-status"></p>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="dotmark" aria-hidden="true">NAMYA</div>
+  <div class="foot-row">
+    <span>© <span id="year">2026</span> Namya Mehta · Built by hand, rendered in dots.</span>
+    <nav aria-label="Footer"><a href="https://github.com/Techyeye98" target="_blank" rel="noopener">GitHub</a><a href="https://t.me/Techyeye" target="_blank" rel="noopener">Telegram</a><a href="#home">Back to top <span aria-hidden="true">↑</span></a></nav>
+  </div>
+</footer>
+<script src="vendor/motion.js"></script>
+<script src="sections.js" defer></script>
+<script type="module" src="app.js"></script>
+</body></html>
