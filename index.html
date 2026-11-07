@@ -24,18 +24,120 @@
   <header class="work-head">
     <p class="kicker"><i aria-hidden="true"></i>Selected work</p>
     <h2 id="work-title">Four builds.<br><span>Four ways in.</span></h2>
-    <p class="work-lede">A ledger that knows a repayment isn’t spending. A phone that rearranges your TV. A bot that runs browser jobs and never loses a result. A calculator that tells you which numbers it’s sure of.</p>
+    <p class="work-lede">A phone that rearranges your TV. A bot that runs browser jobs and never loses a result. A ledger that knows a repayment isn’t spending. A calculator that tells you which numbers it’s sure of.</p>
     <nav class="work-index" aria-label="Projects">
-      <a href="#ledger"><b>01</b><span>Pocket Ledger</span><small>Android · finance</small></a>
-      <a href="#tvora"><b>02</b><span>TVora</span><small>Android · TV</small></a>
-      <a href="#zed"><b>03</b><span>Zed Flash</span><small>Python · automation</small></a>
+      <a href="#tvora"><b>01</b><span>TVora</span><small>Android · TV</small></a>
+      <a href="#zed"><b>02</b><span>Zed Flash</span><small>Python · automation</small></a>
+      <a href="#ledger"><b>03</b><span>Pocket Ledger</span><small>Android · finance</small></a>
       <a href="#evaluator"><b>04</b><span>Evaluator</span><small>Android · calculators</small></a>
     </nav>
   </header>
 
-  <!-- 01 · Pocket Ledger: presented as a printed receipt -->
+  <!-- 01 · TVora: a TV you flip through with a remote -->
+  <article class="project tvora" id="tvora" aria-labelledby="tvora-title">
+    <div class="case-label"><b>01</b><span>Android · TV customization · Kotlin &amp; Compose</span></div>
+    <div class="tv-head">
+      <h3 id="tvora-title">TVora</h3>
+      <p class="deck">Clean up and personalise an Android TV from your phone — with a way back for every change.</p>
+    </div>
+    <div class="tv-stage">
+      <figure class="tv-phone">
+        <img src="assets/tvora.png" width="360" height="780" alt="TVora phone app showing the connected TV dashboard" loading="lazy" decoding="async">
+        <figcaption>Real TVora screen · earlier build</figcaption>
+      </figure>
+      <div class="tv">
+        <div class="tv-screen">
+          <div class="tv-osd" aria-hidden="true"><span>CH <b id="tv-ch">01</b></span><span class="tv-live">● LIVE</span></div>
+          <div class="tv-panel" role="tabpanel" id="tv-p1" aria-labelledby="tv-t1" tabindex="0">
+            <p class="tv-kicker">Problem</p>
+            <p class="tv-big">Arranging apps, swapping wallpaper and clearing clutter means many trips through TV menus.</p>
+          </div>
+          <div class="tv-panel" role="tabpanel" id="tv-p2" aria-labelledby="tv-t2" tabindex="0" hidden>
+            <p class="tv-kicker">What I built</p>
+            <p class="tv-big">TVora, built on the open-source Clean Your TV app and launcher. I added phone pairing, wallpaper import, app visibility and placement, a Bluetooth shortcut and recovery fixes.</p>
+          </div>
+          <div class="tv-panel" role="tabpanel" id="tv-p3" aria-labelledby="tv-t3" tabindex="0" hidden>
+            <p class="tv-kicker">Key decisions</p>
+            <ul class="tv-list">
+              <li>Connects over local ADB; the TV owner authorizes debugging.</li>
+              <li>Cleanup shows a plan first and saves a restore point.</li>
+              <li>A restore ends on the TV’s restored Home screen; skipped steps are reported, never hidden.</li>
+              <li>Hiding an app never uninstalls it.</li>
+            </ul>
+          </div>
+          <div class="tv-panel" role="tabpanel" id="tv-p4" aria-labelledby="tv-t4" tabindex="0" hidden>
+            <p class="tv-kicker">Credits &amp; status</p>
+            <p class="tv-big tv-mid">Built on Clean Your TV by udhaykumarbala, with the launcher, themes and TV lists by Gathin &amp; contributors. MIT licensed. Release 0.1.2, 5&nbsp;Nov&nbsp;2026.</p>
+          </div>
+          <div class="tv-noise" aria-hidden="true"></div>
+        </div>
+        <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="remote">
+        <p class="remote-label" aria-hidden="true">Remote</p>
+        <div class="remote-tabs" role="tablist" aria-label="TVora channels" aria-orientation="vertical">
+        <button class="ch" role="tab" id="tv-t1" aria-controls="tv-p1" aria-selected="true"><b>1</b>Problem</button>
+        <button class="ch" role="tab" id="tv-t2" aria-controls="tv-p2" aria-selected="false" tabindex="-1"><b>2</b>Built</button>
+        <button class="ch" role="tab" id="tv-t3" aria-controls="tv-p3" aria-selected="false" tabindex="-1"><b>3</b>Decisions</button>
+        <button class="ch" role="tab" id="tv-t4" aria-controls="tv-p4" aria-selected="false" tabindex="-1"><b>4</b>Credits</button>
+        </div>
+        <div class="remote-links">
+          <a class="remote-visit" href="https://techyeye98.github.io/TVora/" target="_blank" rel="noopener">Visit TVora <span aria-hidden="true">↗</span></a>
+          <a class="remote-link" href="https://github.com/Techyeye98/TVora/releases/tag/v0.1.2" target="_blank" rel="noopener">Release 0.1.2 on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 02 · Zed Flash: live job simulator on the workflow diagram -->
+  <article class="project zed" id="zed" aria-labelledby="zed-title">
+    <div class="case-label"><b>02</b><span>Python · Private automation tool · Docker</span></div>
+    <div class="zed-head">
+      <h3 id="zed-title">Zed Flash</h3>
+      <p class="deck">Send a job from Telegram. Watch it run. Pause, stop or resume it, and never lose a result, even when the sheet is down.</p>
+    </div>
+    <figure class="flow" aria-labelledby="flow-cap">
+      <figcaption id="flow-cap" class="sr-only">Zed Flash job workflow: commands arrive from Telegram, a browser worker and a separate Sheets sync service run inside one Docker deployment with job state and results saved locally, and Google Sheets mirrors the results. The controls below run a simulated test job.</figcaption>
+      <div class="flow-bar">
+        <p>Job simulator <span>· sample job, no real data</span></p>
+        <div class="flow-controls" role="group" aria-label="Simulated job controls">
+          <button class="flow-run" type="button" id="zf-run"><span class="run-dot" aria-hidden="true"></span><span class="run-label">Run a test job</span></button>
+          <button class="flow-btn" type="button" id="zf-pause" disabled>Pause</button>
+          <button class="flow-btn" type="button" id="zf-stop" disabled>Stop</button>
+          <button class="flow-switch" type="button" id="zf-offline" role="switch" aria-checked="false"><span class="sw" aria-hidden="true"><i></i></span>Sheets offline</button>
+        </div>
+      </div>
+      <ol class="flow-track">
+        <li class="node" data-step="0"><button type="button" aria-describedby="flow-detail"><small>01 · Command</small><strong>Telegram</strong><span>Start, pause, stop or resume a job from chat.</span></button></li>
+        <li class="docker">
+          <p class="docker-tag">Docker deployment</p>
+          <ol>
+            <li class="node" data-step="1"><button type="button" aria-describedby="flow-detail"><small>02 · Run</small><strong>Browser worker</strong><span>Works through the job row by row.</span></button></li>
+            <li class="node" data-step="2"><button type="button" aria-describedby="flow-detail"><small>03 · Sync</small><strong>Sheets sync</strong><span>Queues writes and retries on its own.</span></button></li>
+          </ol>
+          <div class="volume"><span aria-hidden="true">⛁</span> Job state &amp; results saved locally in SQLite</div>
+        </li>
+        <li class="node" data-step="3"><button type="button" aria-describedby="flow-detail"><small>04 · Record</small><strong>Google Sheets</strong><span>Mirrors results whenever it’s reachable.</span><em class="sheet-badge" aria-hidden="true"></em></button></li>
+      </ol>
+      <div class="flow-wire" aria-hidden="true"><i class="pulse"></i></div>
+      <div class="job" aria-label="Simulated job progress">
+        <div class="job-top"><p class="job-name">Test job <span>· 8 rows</span></p><p class="job-state" id="zf-state">Idle</p></div>
+        <ol class="job-rows" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+        <p class="job-counts" id="zf-counts">Done 0/8 · Failed 0 · Waiting for Sheets 0</p>
+      </div>
+      <p class="flow-detail" id="flow-detail" aria-live="polite">Run a test job, then try Pause, Stop or switching Sheets offline.</p>
+    </figure>
+    <dl class="zed-facts">
+      <div><dt>Problem</dt><dd>Repeat browser jobs meant doing the same clicks by hand, then updating a sheet separately.</dd></div>
+      <div><dt>I built</dt><dd>Telegram job control, browser automation and a separate Sheets sync, shipped as one Docker deployment.</dd></div>
+      <div><dt>Decisions</dt><dd>Jobs live in SQLite: pause finishes the current row, stop keeps the progress made. Sheet writes queue and retry on their own, so results stay safe.</dd></div>
+      <div><dt>Access</dt><dd>Private tool. This is a simulation; no source, servers or data are shown.</dd></div>
+    </dl>
+  </article>
+
+  <!-- 03 · Pocket Ledger: presented as a printed receipt -->
   <article class="project ledger" id="ledger" aria-labelledby="ledger-title">
-    <div class="case-label"><b>01</b><span>Android · Personal finance · Java</span></div>
+    <div class="case-label"><b>03</b><span>Android · Personal finance · Java</span></div>
     <div class="ledger-grid">
       <div class="ledger-copy">
         <h3 id="ledger-title">Pocket Ledger</h3>
@@ -122,108 +224,6 @@
     </div>
   </article>
 
-  <!-- 02 · TVora: a TV you flip through with a remote -->
-  <article class="project tvora" id="tvora" aria-labelledby="tvora-title">
-    <div class="case-label"><b>02</b><span>Android · TV customization · Kotlin &amp; Compose</span></div>
-    <div class="tv-head">
-      <h3 id="tvora-title">TVora</h3>
-      <p class="deck">Clean up and personalise an Android TV from your phone — with a way back for every change.</p>
-    </div>
-    <div class="tv-stage">
-      <figure class="tv-phone">
-        <img src="assets/tvora.png" width="360" height="780" alt="TVora phone app showing the connected TV dashboard" loading="lazy" decoding="async">
-        <figcaption>Real TVora screen · earlier build</figcaption>
-      </figure>
-      <div class="tv">
-        <div class="tv-screen">
-          <div class="tv-osd" aria-hidden="true"><span>CH <b id="tv-ch">01</b></span><span class="tv-live">● LIVE</span></div>
-          <div class="tv-panel" role="tabpanel" id="tv-p1" aria-labelledby="tv-t1" tabindex="0">
-            <p class="tv-kicker">Problem</p>
-            <p class="tv-big">Arranging apps, swapping wallpaper and clearing clutter means many trips through TV menus.</p>
-          </div>
-          <div class="tv-panel" role="tabpanel" id="tv-p2" aria-labelledby="tv-t2" tabindex="0" hidden>
-            <p class="tv-kicker">What I built</p>
-            <p class="tv-big">TVora, built on the open-source Clean Your TV app and launcher. I added phone pairing, wallpaper import, app visibility and placement, a Bluetooth shortcut and recovery fixes.</p>
-          </div>
-          <div class="tv-panel" role="tabpanel" id="tv-p3" aria-labelledby="tv-t3" tabindex="0" hidden>
-            <p class="tv-kicker">Key decisions</p>
-            <ul class="tv-list">
-              <li>Connects over local ADB; the TV owner authorizes debugging.</li>
-              <li>Cleanup shows a plan first and saves a restore point.</li>
-              <li>A restore ends on the TV’s restored Home screen; skipped steps are reported, never hidden.</li>
-              <li>Hiding an app never uninstalls it.</li>
-            </ul>
-          </div>
-          <div class="tv-panel" role="tabpanel" id="tv-p4" aria-labelledby="tv-t4" tabindex="0" hidden>
-            <p class="tv-kicker">Credits &amp; status</p>
-            <p class="tv-big tv-mid">Built on Clean Your TV by udhaykumarbala, with the launcher, themes and TV lists by Gathin &amp; contributors. MIT licensed. Release 0.1.2, 5&nbsp;Nov&nbsp;2026.</p>
-          </div>
-          <div class="tv-noise" aria-hidden="true"></div>
-        </div>
-        <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
-      </div>
-      <div class="remote">
-        <p class="remote-label" aria-hidden="true">Remote</p>
-        <div class="remote-tabs" role="tablist" aria-label="TVora channels" aria-orientation="vertical">
-        <button class="ch" role="tab" id="tv-t1" aria-controls="tv-p1" aria-selected="true"><b>1</b>Problem</button>
-        <button class="ch" role="tab" id="tv-t2" aria-controls="tv-p2" aria-selected="false" tabindex="-1"><b>2</b>Built</button>
-        <button class="ch" role="tab" id="tv-t3" aria-controls="tv-p3" aria-selected="false" tabindex="-1"><b>3</b>Decisions</button>
-        <button class="ch" role="tab" id="tv-t4" aria-controls="tv-p4" aria-selected="false" tabindex="-1"><b>4</b>Credits</button>
-        </div>
-        <div class="remote-links">
-          <a class="remote-visit" href="https://github.com/Techyeye98/TVora" target="_blank" rel="noopener">Visit TVora <span aria-hidden="true">↗</span></a>
-          <a class="remote-link" href="https://github.com/Techyeye98/TVora/releases/tag/v0.1.2" target="_blank" rel="noopener">Release 0.1.2 on GitHub <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- 03 · Zed Flash: live job simulator on the workflow diagram -->
-  <article class="project zed" id="zed" aria-labelledby="zed-title">
-    <div class="case-label"><b>03</b><span>Python · Private automation tool · Docker</span></div>
-    <div class="zed-head">
-      <h3 id="zed-title">Zed Flash</h3>
-      <p class="deck">Send a job from Telegram. Watch it run. Pause, stop or resume it, and never lose a result, even when the sheet is down.</p>
-    </div>
-    <figure class="flow" aria-labelledby="flow-cap">
-      <figcaption id="flow-cap" class="sr-only">Zed Flash job workflow: commands arrive from Telegram, a browser worker and a separate Sheets sync service run inside one Docker deployment with job state and results saved locally, and Google Sheets mirrors the results. The controls below run a simulated test job.</figcaption>
-      <div class="flow-bar">
-        <p>Job simulator <span>· sample job, no real data</span></p>
-        <div class="flow-controls" role="group" aria-label="Simulated job controls">
-          <button class="flow-run" type="button" id="zf-run"><span class="run-dot" aria-hidden="true"></span><span class="run-label">Run a test job</span></button>
-          <button class="flow-btn" type="button" id="zf-pause" disabled>Pause</button>
-          <button class="flow-btn" type="button" id="zf-stop" disabled>Stop</button>
-          <button class="flow-switch" type="button" id="zf-offline" role="switch" aria-checked="false"><span class="sw" aria-hidden="true"><i></i></span>Sheets offline</button>
-        </div>
-      </div>
-      <ol class="flow-track">
-        <li class="node" data-step="0"><button type="button" aria-describedby="flow-detail"><small>01 · Command</small><strong>Telegram</strong><span>Start, pause, stop or resume a job from chat.</span></button></li>
-        <li class="docker">
-          <p class="docker-tag">Docker deployment</p>
-          <ol>
-            <li class="node" data-step="1"><button type="button" aria-describedby="flow-detail"><small>02 · Run</small><strong>Browser worker</strong><span>Works through the job row by row.</span></button></li>
-            <li class="node" data-step="2"><button type="button" aria-describedby="flow-detail"><small>03 · Sync</small><strong>Sheets sync</strong><span>Queues writes and retries on its own.</span></button></li>
-          </ol>
-          <div class="volume"><span aria-hidden="true">⛁</span> Job state &amp; results saved locally in SQLite</div>
-        </li>
-        <li class="node" data-step="3"><button type="button" aria-describedby="flow-detail"><small>04 · Record</small><strong>Google Sheets</strong><span>Mirrors results whenever it’s reachable.</span><em class="sheet-badge" aria-hidden="true"></em></button></li>
-      </ol>
-      <div class="flow-wire" aria-hidden="true"><i class="pulse"></i></div>
-      <div class="job" aria-label="Simulated job progress">
-        <div class="job-top"><p class="job-name">Test job <span>· 8 rows</span></p><p class="job-state" id="zf-state">Idle</p></div>
-        <ol class="job-rows" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
-        <p class="job-counts" id="zf-counts">Done 0/8 · Failed 0 · Waiting for Sheets 0</p>
-      </div>
-      <p class="flow-detail" id="flow-detail" aria-live="polite">Run a test job, then try Pause, Stop or switching Sheets offline.</p>
-    </figure>
-    <dl class="zed-facts">
-      <div><dt>Problem</dt><dd>Repeat browser jobs meant doing the same clicks by hand, then updating a sheet separately.</dd></div>
-      <div><dt>I built</dt><dd>Telegram job control, browser automation and a separate Sheets sync, shipped as one Docker deployment.</dd></div>
-      <div><dt>Decisions</dt><dd>Jobs live in SQLite: pause finishes the current row, stop keeps the progress made. Sheet writes queue and retry on their own, so results stay safe.</dd></div>
-      <div><dt>Access</dt><dd>Private tool. This is a simulation; no source, servers or data are shown.</dd></div>
-    </dl>
-  </article>
-
   <!-- 04 · Evaluator: confirmed vs estimated -->
   <article class="project evaluator" id="evaluator" aria-labelledby="eval-title">
     <div class="case-label"><b>04</b><span>Android · Fee calculators · Java</span></div>
@@ -274,9 +274,9 @@
   <div class="about-main">
     <p class="about-lead">I build Android apps and automation for the things I keep doing by hand — and I care most about what happens <em>after</em> the first tap.</p>
     <ol class="rules">
-      <li><b>01</b><div><strong>A repayment is not spending.</strong><p>Pocket Ledger keeps transfers and paybacks out of your totals, so the number you see is the money you actually used.</p></div></li>
-      <li><b>02</b><div><strong>Every cleanup needs an undo.</strong><p>TVora shows the plan and saves a restore point before it changes anything on the TV.</p></div></li>
-      <li><b>03</b><div><strong>Automation should leave a trail.</strong><p>Zed Flash keeps every result locally and reports failed rows, so you can check what ran without asking.</p></div></li>
+      <li><b>01</b><div><strong>Every cleanup needs an undo.</strong><p>TVora shows the plan and saves a restore point before it changes anything on the TV.</p></div></li>
+      <li><b>02</b><div><strong>Automation should leave a trail.</strong><p>Zed Flash keeps every result locally and reports failed rows, so you can check what ran without asking.</p></div></li>
+      <li><b>03</b><div><strong>A repayment is not spending.</strong><p>Pocket Ledger keeps transfers and paybacks out of your totals, so the number you see is the money you actually used.</p></div></li>
       <li><b>04</b><div><strong>Say what you’re sure of.</strong><p>Evaluator labels its estimates as estimates, on screen and in every shared PDF.</p></div></li>
     </ol>
     <div class="toolbox">
