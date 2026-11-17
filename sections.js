@@ -362,7 +362,7 @@
   });
   /* ---------- Scroll reveal: content rises into place as it enters the screen ---------- */
   if (!reduced() && 'IntersectionObserver' in window) {
-    const sel = ['.work-head > *', '.project > .case-label', '.project h3', '.project .deck', '.ledger-phone', '.pl-under',
+    const sel = ['.skills > .kicker', '.sk-h', '.skv-map', '.sm-proof', '.sk-also', '.work-head > *', '.project > .case-label', '.project h3', '.project .deck', '.ledger-phone', '.pl-under',
       '.tv-stage > *', '.flow', '.eval-grid > *', '.also', '.about-side > *', '.about-lead', '.rules > li', '.toolbox > div',
       '.contact > :not(.sr-only)', '.site-footer'];
     const els = [...document.querySelectorAll(sel.join(','))].filter(el => el.getBoundingClientRect().top > innerHeight * 0.92);
@@ -493,4 +493,113 @@
       addEventListener('accentchange', () => requestAnimationFrame(() => { readHi(); if (reduced()) draw(0); }));
     });
   }
+  /* ---------- Right-side section rail: shows where you are, like a channel number ---------- */
+  const rail = document.querySelector('.rail');
+  if (rail && 'IntersectionObserver' in window) {
+    const links = [...rail.querySelectorAll('a')];
+    const secs = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+    const num = rail.querySelector('#rail-num'), name = rail.querySelector('#rail-name');
+    let cur = -1;
+    const setActive = i => {
+      if (i === cur || i < 0) return; cur = i;
+      links.forEach((a, j) => (j === i ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+      num.textContent = String(i).padStart(2, '0'); name.textContent = links[i].dataset.label;
+      run(num, { y: [10, 0], opacity: [0, 1] }, { duration: 0.3 });
+      run(name, { opacity: [0, 1], x: [6, 0] }, { duration: 0.3 });
+    };
+    const pick = () => {
+      // the section crossing the middle of the screen wins; fall back to the last one above it
+      let best = -1;
+      secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= innerHeight * 0.5) best = i; });
+      setActive(Math.max(0, best));
+      rail.classList.toggle('is-on', scrollY > innerHeight * 0.55);
+    };
+    const io = new IntersectionObserver(() => pick(), { rootMargin: '-50% 0px -50% 0px' });
+    secs.forEach(s => s && io.observe(s));
+    let ticking = false;
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; pick(); }); } }, { passive: true });
+    pick();
+  }
+
+  /* ---------- Skills map: hover or tap a skill, see which projects use it ---------- */
+  const skSec = document.getElementById('skills');
+  if (skSec && document.getElementById('sk-map')) {
+    const P = {
+      tvora: { name: 'TVora', href: '#tvora' }, zed: { name: 'Zed Flash', href: '#zed' }, ledger: { name: 'Pocket Ledger', href: '#ledger' },
+      evaluator: { name: 'Evaluator', href: '#evaluator' }, northline: { name: 'Northline Roofing', href: '#northline' }, site: { name: 'This site', href: '#home' }
+    };
+    const S = [
+      ['Python', 'lang', ['zed'], 'Zed Flash is written in Python: the Telegram bot, the browser worker and the sheet sync.'],
+      ['Kotlin', 'lang', ['tvora'], 'TVora is written in Kotlin.'],
+      ['Java', 'lang', ['ledger', 'evaluator'], 'Pocket Ledger and Evaluator are native Android apps written in Java.'],
+      ['TypeScript', 'lang', ['northline'], 'The Northline Roofing demo site is written in TypeScript.'],
+      ['JavaScript', 'lang', ['site'], 'Every interaction on this site, plus the TVora and Pocket Ledger websites.'],
+      ['Docker', 'auto', ['zed'], 'Zed Flash ships as one Docker deployment.'],
+      ['Playwright', 'auto', ['zed'], 'Zed Flash’s browser worker uses Playwright to work through jobs row by row.'],
+      ['SQLite', 'auto', ['zed'], 'Zed Flash keeps job state and every result locally in SQLite.'],
+      ['Telegram Bot API', 'auto', ['zed'], 'Zed Flash is controlled from Telegram: start, pause, stop or resume a job.'],
+      ['Git & GitHub', 'auto', ['tvora', 'ledger'], 'Public releases on GitHub: TVora 0.1.2 and Pocket Ledger 1.0.0.'],
+      ['Jetpack Compose', 'android', ['tvora'], 'TVora’s interface is built with Jetpack Compose.'],
+      ['Room', 'android', ['ledger'], 'Room is Pocket Ledger’s local database, so it works fully offline.'],
+      ['ML Kit', 'android', ['ledger'], 'Pocket Ledger reads receipt text on the device with ML Kit.'],
+      ['ADB', 'android', ['tvora'], 'TVora talks to the TV over ADB to clean it up and restore it.'],
+      ['Gradle', 'android', ['ledger', 'evaluator'], 'Pocket Ledger and Evaluator are built with Gradle.'],
+      ['React', 'web', ['northline'], 'The Northline Roofing demo site is built with React.'],
+      ['Three.js', 'web', ['site'], 'The dot portrait at the top of this site is Three.js.'],
+      ['HTML & CSS', 'web', ['site'], 'This site and the TVora and Pocket Ledger websites.']
+    ].map(([n, g, p, w]) => ({ n, g, p, w, key: n.toLowerCase().replace(/[^a-z0-9]/g, '') }));
+    const G = [['lang', 'Languages'], ['auto', 'Automation & backend'], ['android', 'Android'], ['web', 'Web']];
+    const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    const projLink = id => `<a href="${P[id].href}">${P[id].name}</a>`;
+    const map = document.getElementById('sk-map'), svg = document.getElementById('sm-lines'), proof = document.getElementById('sm-proof');
+    const skillsCol = document.getElementById('sm-skills');
+    skillsCol.innerHTML = G.map(([g, label]) =>
+      `<div class="sm-group"><p>${label}</p><div>${S.filter(s => s.g === g).map(s => `<button type="button" class="sm-skill" data-k="${s.key}">${esc(s.n)}</button>`).join('')}</div></div>`).join('');
+    document.getElementById('sm-projects').innerHTML = Object.entries(P).map(([id, p]) =>
+      `<div class="sm-proj" data-p="${id}"><button type="button"><b>${p.name}</b><small>${esc(S.filter(s => s.p.includes(id)).map(s => s.n).join(' · '))}</small></button><a href="${p.href}" aria-label="Go to ${p.name}">→</a></div>`).join('');
+    const skBtns = [...map.querySelectorAll('.sm-skill')], projEls = [...map.querySelectorAll('.sm-proj')];
+    // Route: drop out of the tag, run along the gap under its row (never across other tags), then curve to the project.
+    const route = (a, b) => {
+      const r = map.getBoundingClientRect(), A = a.getBoundingClientRect(), B = b.getBoundingClientRect(), C = skillsCol.getBoundingClientRect();
+      const sx = A.left + A.width / 2 - r.left, sy = A.bottom - r.top, gy = sy + 4, rad = 4;
+      const ex = C.right - r.left + 16, x2 = B.left - r.left, y2 = B.top + B.height / 2 - r.top, dx = Math.max(60, (x2 - ex) * 0.5);
+      return `M${sx} ${sy} L${sx} ${gy - rad} Q${sx} ${gy} ${sx + rad} ${gy} L${ex} ${gy} C${ex + dx} ${gy} ${x2 - dx} ${y2} ${x2} ${y2}`;
+    };
+    let lastKey = '';
+    function light(skills, projs, text) {
+      const key = skills.join() + '|' + projs.join();
+      skBtns.forEach(b => b.classList.toggle('on', skills.includes(b.dataset.k)));
+      projEls.forEach(p => p.classList.toggle('on', projs.includes(p.dataset.p)));
+      map.classList.toggle('has-active', skills.length > 0);
+      if (key !== lastKey) {
+        lastKey = key;
+        const still = reduced();
+        svg.innerHTML = matchMedia('(max-width:860px)').matches ? '' : skills.flatMap(k => {
+          const s = S.find(x => x.key === k), btn = skBtns.find(x => x.dataset.k === k);
+          return s.p.filter(p => projs.includes(p)).map((p, i) => {
+            const d = route(btn, projEls.find(e => e.dataset.p === p)), end = d.split(' ').slice(-2);
+            const cells = still ? '' : [0, 0.5, 1].map(o => `<circle class="sm-cell" r="2.2"><animateMotion dur="1.5s" begin="${-(o * 1.5 + i * 0.25).toFixed(2)}s" repeatCount="indefinite" path="${d}"/></circle>`).join('');
+            return `<path class="sm-base" pathLength="1" d="${d}"/><path class="sm-flow" pathLength="1" d="${d}"/>${cells}<circle class="sm-end" cx="${end[0]}" cy="${end[1]}" r="3.2"/>`;
+          });
+        }).join('');
+      }
+      if (text != null) proof.innerHTML = text;
+    }
+    const showSkill = k => { const s = S.find(x => x.key === k); light([k], s.p, `<b>${esc(s.n)}</b> → ${s.p.map(projLink).join(' · ')}. ${esc(s.w)}`); };
+    const showProj = id => { const ks = S.filter(s => s.p.includes(id)); light(ks.map(s => s.key), [id], `<b>${P[id].name}</b> uses ${esc(ks.map(s => s.n).join(', '))}.`); };
+    // A gentle tour through the projects until someone interacts, so the section is never static.
+    const tour = ['zed', 'tvora', 'ledger', 'site', 'evaluator', 'northline'];
+    let ti = 0, tourTimer = 0, userTimer = 0, touched = false, seen = false;
+    const startTour = () => { if (reduced()) return; clearInterval(tourTimer); showProj(tour[ti++ % tour.length]); tourTimer = setInterval(() => showProj(tour[ti++ % tour.length]), 2800); };
+    const pauseTour = () => { clearInterval(tourTimer); clearTimeout(userTimer); touched = true; };
+    skBtns.forEach(b => { const go = () => { pauseTour(); showSkill(b.dataset.k); }; ['pointerenter', 'focus', 'click'].forEach(ev => b.addEventListener(ev, go)); });
+    projEls.forEach(e => { const go = () => { pauseTour(); showProj(e.dataset.p); }; e.addEventListener('pointerenter', go); ['focus', 'click'].forEach(ev => e.querySelector('button').addEventListener(ev, go)); });
+    map.addEventListener('pointerleave', () => { clearTimeout(userTimer); userTimer = setTimeout(() => { touched = false; startTour(); }, 4000); });
+    new IntersectionObserver(es => {
+      if (es[0].isIntersecting) { if (!seen || !touched) { seen = true; startTour(); } }
+      else clearInterval(tourTimer);
+    }, { threshold: 0.3 }).observe(map);
+    let rt2; addEventListener('resize', () => { clearTimeout(rt2); rt2 = setTimeout(() => { lastKey = ''; const on = skBtns.filter(b => b.classList.contains('on')).map(b => b.dataset.k), pj = projEls.filter(p => p.classList.contains('on')).map(p => p.dataset.p); if (on.length) light(on, pj); }, 150); });
+  }
+
 })();

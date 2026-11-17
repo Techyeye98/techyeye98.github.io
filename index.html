@@ -10,7 +10,12 @@
 </head>
 <body>
 <a class="skip" href="#work">Skip to projects</a>
-<header class="nav"><a class="wordmark" href="#home" aria-label="Namya Mehta home">nm<span>®</span></a><span class="nav-note">NAMYA MEHTA<br>INDEPENDENT BUILDER</span><nav aria-label="Main navigation"><a href="#work">Work <span>04</span></a><a href="#about">About</a><a class="nav-contact" href="#contact">Let's talk <span>↗</span></a></nav></header>
+<header class="nav"><a class="wordmark" href="#home" aria-label="Namya Mehta home">nm<span>®</span></a><span class="nav-note">NAMYA MEHTA<br>INDEPENDENT BUILDER</span><nav aria-label="Main navigation"><a href="#work">Work <span>04</span></a><a href="#skills">Skills</a><a href="#about">About</a><a class="nav-contact" href="#contact">Let's talk <span>↗</span></a></nav></header>
+<nav class="rail" aria-label="Page sections">
+  <p class="rail-count" aria-hidden="true"><b id="rail-num">00</b><small>/07</small></p>
+  <p class="rail-name" id="rail-name" aria-hidden="true">Intro</p>
+  <ol><li><a href="#home" data-label="Intro" aria-label="00 Intro"><i aria-hidden="true"></i></a></li><li><a href="#tvora" data-label="TVora" aria-label="01 TVora"><i aria-hidden="true"></i></a></li><li><a href="#zed" data-label="Zed Flash" aria-label="02 Zed Flash"><i aria-hidden="true"></i></a></li><li><a href="#ledger" data-label="Pocket Ledger" aria-label="03 Pocket Ledger"><i aria-hidden="true"></i></a></li><li><a href="#evaluator" data-label="Evaluator" aria-label="04 Evaluator"><i aria-hidden="true"></i></a></li><li><a href="#skills" data-label="Skills" aria-label="05 Skills"><i aria-hidden="true"></i></a></li><li><a href="#about" data-label="About" aria-label="06 About"><i aria-hidden="true"></i></a></li><li><a href="#contact" data-label="Contact" aria-label="07 Contact"><i aria-hidden="true"></i></a></li></ol>
+</nav>
 <main>
 <section class="hero" id="home" aria-label="Introduction with interactive portrait">
   <div class="hero-top"><span>CODE. CURIOSITY. A LITTLE CHAOS.</span><span>TECHYEYE98 / PERSONAL PORTFOLIO</span></div>
@@ -252,7 +257,7 @@
     </div>
   </article>
 
-  <aside class="also" aria-labelledby="also-title">
+  <aside class="also" id="northline" aria-labelledby="also-title">
     <p class="kicker" id="also-title"><i aria-hidden="true"></i>Also built</p>
     <div class="also-row">
       <div class="also-copy"><strong>Northline Roofing</strong><p>A demo roofing-business site on Whop with service pages, estimate capture and hosted checkout. The business is fictional; payments weren’t tested end to end, and the bounty submission didn’t meet its requirements.</p></div>
@@ -261,6 +266,17 @@
   </aside>
 </section>
 
+<section class="skills" id="skills" aria-labelledby="skills-title">
+  <p class="kicker"><i aria-hidden="true"></i>Skills</p>
+  <h2 class="sk-h" id="skills-title">What I build <span>with.</span></h2>
+  <div class="skv-map" id="sk-map">
+    <div class="sm-skills" id="sm-skills"></div>
+    <div class="sm-projects" id="sm-projects"></div>
+    <svg class="sm-lines" id="sm-lines" aria-hidden="true"></svg>
+  </div>
+  <p class="sm-proof" id="sm-proof" aria-live="polite">Hover or tap a skill to see where I used it.</p>
+  <div class="sk-also"><p class="sk-label">Also used</p><ul><li>Google Sheets API</li><li>Google Apps Script</li><li>Apple Shortcuts</li><li>Tailwind</li><li>Vite</li><li>GSAP / Motion</li></ul></div>
+</section>
 <section class="about" id="about" aria-labelledby="about-title">
   <div class="about-side">
     <p class="kicker"><i aria-hidden="true"></i>About</p>
@@ -279,11 +295,6 @@
       <li><b>03</b><div><strong>A repayment is not spending.</strong><p>Pocket Ledger keeps transfers and paybacks out of your totals, so the number you see is the money you actually used.</p></div></li>
       <li><b>04</b><div><strong>Say what you’re sure of.</strong><p>Evaluator labels its estimates as estimates, on screen and in every shared PDF.</p></div></li>
     </ol>
-    <div class="toolbox">
-      <div><p>On Android</p><ul><li>Java</li><li>Kotlin</li><li>Jetpack Compose</li><li>Room</li><li>ML Kit</li><li>ADB</li></ul></div>
-      <div><p>For automation</p><ul><li>Python</li><li>Playwright</li><li>Telegram bots</li><li>SQLite</li><li>Docker</li><li>Google Sheets</li></ul></div>
-      <div><p>On the web</p><ul><li>HTML, CSS &amp; JS</li><li>React</li><li>TypeScript</li><li>Three.js</li></ul></div>
-    </div>
   </div>
 </section>
 
